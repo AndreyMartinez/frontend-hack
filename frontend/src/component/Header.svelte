@@ -11,7 +11,8 @@
    else if (type === 'login') navigate("/login",{replace:true})
   }
   
-
+  export let typeHeader;
+ console.log(typeHeader)
 </script>
 
 
@@ -20,12 +21,17 @@
  <div class="principal-item"></div>
  <div class="item buttom-content">
  <div>
+{#if typeHeader == "login"}
  <Button class="button" color="dark" outline on:click={() => routerRegister('login')}>
   Iniciar sesión
 </Button>
 <Button class="button" color="dark" outline inse on:click={() => routerRegister('register')}>
   registrarse
 </Button>
+   {/if}
+{#if typeHeader == "general"}
+ <p>hola</p>
+{/if}
 </div>
    </div>
 </header>

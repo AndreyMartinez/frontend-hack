@@ -8,7 +8,7 @@
 <main >
 <video autoplay reload
 src={src}></video>
-<Header/>
+<Header typeHeader={'login'}/>
   <div class='flex'>
   <p>Informate de nuestra iniciativa a continuación</p>
 	<img src={srcIcon}  class="iconImg" alt="icono down"/>
