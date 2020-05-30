@@ -16,11 +16,25 @@
    * @author Raphael Martinez 
    * @description handler encargado de guardar el registro del usuario
    **/
-  const sendRegister = () => {
-       notifier.success('Usuario registrado correctamente')
-   console.log(email,number,password)
-   setTimeout
-  }
+  const sendRegister = async() => {
+   
+      await fetch('http://192.168.1.3:8080/api/register',{
+    method: "POST",
+    body:  JSON.stringify({
+        'email':email,
+        'telefono':number,
+        'clave':password
+    })
+   }).then(response => {
+notifier.success('Usuario registrado correctamente')
+setTimeout(()=> {
+     navigate("/",{replace:true})
+},3000)
+      }).catch(err => {
+         
+      })
+   }
+
 
   let email = null
   let number = null 

@@ -20,6 +20,7 @@ navigate("/",{replace:true})
  **/
   const sendLogin = () => {
        notifier.success('Iniciando sesión')
+       navigate("/recycler",{replace:true})
    console.log(email,password)
   }
 
