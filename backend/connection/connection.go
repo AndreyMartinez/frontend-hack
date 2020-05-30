@@ -7,7 +7,7 @@ import (
   //	"gopkg.in/mgo.v2/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
-	"github.com/reciclaje/model"
+	"github.com/candrea/backend/model"
 )
 
 type Connection interface {
