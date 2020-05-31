@@ -11,16 +11,31 @@ import { NotificationDisplay, notifier } from '@beyonk/svelte-notifications'
    * @description handler de navegación para registro del usuario
   **/
   const routerMain = () => {
-navigate("/",{replace:true})
+    navigate("/",{replace:true})
   }
 
 /**
  *@author Raphael Martinez
  *@description handler para validar autenticación de lógin
  **/
-  const sendLogin = () => {
-       notifier.success('Iniciando sesión')
-       navigate("/recycler",{replace:true})
+  const sendLogin = async() => {
+    localStorage.setItem('recycler',"error")
+       let response = {
+         email:email,
+         clave:password
+       }
+        await fetch('http://192.168.1.3:8080/api/login',{
+    method: "POST",
+    body:  JSON.stringify(response)
+   }).then(response => { 
+     localStorage.setItem("user",response.responseContent)
+     notifier.success('Bienvenido')
+     setTimeout(()=> {
+     navigate("/recycler",{replace:true})
+     },4000)
+     }).catch(err => {
+       console.log(err)
+       })
   }
 
   let email = null

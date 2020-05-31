@@ -13,7 +13,7 @@
 <Route path="login" component="{LoginPage}" />
 <Route path="iniciative" component="{IniciativePage}"/>
 <Route path="recycler" component="{DisponserPage}"/>
-    <Route path="/"><IniciativePage /></Route>
+    <Route path="/"><MainPage /></Route>
 </Router>
 
 

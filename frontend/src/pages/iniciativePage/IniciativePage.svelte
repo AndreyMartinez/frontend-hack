@@ -1,5 +1,6 @@
 <script>
   import Header from '../../component/Header.svelte'
+    import { navigate} from "svelte-routing";
    import { NotificationDisplay, notifier } from '@beyonk/svelte-notifications'
   import { onMount } from 'svelte';
 
@@ -37,21 +38,25 @@ const sendInfoUser = async() => {
      await fetch('http://192.168.1.3:8080/api/recycle',{
     method: "POST",
     body:  JSON.stringify(Response)
-   }).then(response => { notifier.success('Pronto, nos podremos en contacto')
-setTimeout(()=> {
-     navigate("/",{replace:true})
-},3000)
+   }).then(response => { 
+     localStorage.setItem('recycler',"good")
+     notifier.success('Pronto, nos podremos en contacto.Cambiaste al mundo')
+     setTimeout(() => {
+navigate("/recycler",{replace:true})
+     },3000)
+     
       }).catch(err => {
          
       })
 }
-        
 
 let cajas = 'assets/img/caja-01.png'
 let latas = 'assets/img/cel-01.png'
 let celulares = 'assets/img/latas-01.png'
 let mainImg = 'assets/img/person.jpg'
-let finalImg = 'assets/img/final.jpg'
+let recyclerImg = 'assets/img/init.jpg'
+
+let recycler =  localStorage.getItem('recycler')
 let container;
 let  marker;
 let map;
@@ -61,20 +66,34 @@ let textArea
    let themes = { 
   success: '#28a74559',
 }
+ let type = localStorage.getItem('type');
     
 	
 </script>
 
 <main>  
 <NotificationDisplay {themes}/>
+{#if recycler == "error"}
 <img src={mainImg} class="contentImg" alt="img"/>
-<Header typeHeader={'general'}/>
+{/if}
+{#if recycler=="good"}
+<img src={recyclerImg} class="contentImg" alt="img"/>
+{/if}
+<Header typeHeader={'general'} returnPage={true}/>
 <div class="content">
 <div class="content-img">
+{#if type == "carton"}
 <img src={cajas} class="img-content" alt="cajas">
+{/if}
+{#if type == "latas"}
+<img src={latas} class="img-content" alt="latas">
+{/if}
+{#if type == "celulares"}
+<img src={celulares} class="img-content" alt="celulares">
+{/if}
 </div>
 <div class="content-img">
-<p class="center">Quieres preguntar como salvar al mundo o programa que vayan a tú casa a recoger tu reciclaje en la parte inferior</p>
+<p class="center"> Quieres preguntar como salvar al mundo o programa que vayan a tú casa a recoger tu reciclaje en la parte inferior</p>
 <iframe class="iframe" src="https://web-chat.global.assistant.watson.cloud.ibm.com/preview.html?region=us-south&integrationID=8dd00977-e13d-4bec-9d10-bcbef1e34444&serviceInstanceID=0a368225-b774-4ce6-b3f7-b0c83c1af98b" title="watson"/>
  </div>
  </div>
