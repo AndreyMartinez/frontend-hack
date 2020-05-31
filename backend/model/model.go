@@ -7,20 +7,21 @@ import (
 // Usuario - Model
 type Usuario struct {
 //	ID         bson.ObjectId `bson:"_id" json:"id"`
-	Name      string  `json:"nombre"`
-	Email     string  `json:"email"`
-	Clave     string  `json:"clave"`
-	Rol     string  `json:"rol"`
-	Telefono string `json:"telefono"`
+	Name      string  `bson:"nombre"   json:"nombre"`
+	Email     string `bson:"email" json:"email"`
+	Clave     string  `bson:"clave" json:"clave"`
+	Rol     string  `bson:"rol" json:"rol"`
+	Telefono string `bson:"telefono" bson:"telefono"`
 }
 
 type Reciclaje struct {
 	//	ID         bson.ObjectId `bson:"_id" json:"id"`
-		Tipo      string  `json:"tipo"`
-		User_id     string  `json:"user_id"`
-		Latitud    string  `json:"latitud"`
-		Longitud     string  `json:"longitud"`
-		Fecha string `json:"fecha"`
+	    Email     string  `bson:"email" json:"email"`
+		Tipo      string  `bson:"tipo" json:"tipo"`
+		User_id     string  `bson:"user_id" json:"user_id"`
+		Latitud    string  `bson:"latitud" json:"latitud"`
+		Longitud     string  `bson:"longitud" json:"longitud"`
+		Fecha string `bson:"fecha" json:"fecha"`
 	}
 
 //  - for request
