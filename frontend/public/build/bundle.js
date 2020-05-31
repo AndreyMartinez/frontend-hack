@@ -6001,27 +6001,27 @@ var app = (function () {
     // (18:4) <Route path="/">
     function create_default_slot_1$1(ctx) {
     	let current;
-    	const adminpage = new AdminPage({ $$inline: true });
+    	const mainpage = new MainPage({ $$inline: true });
 
     	const block = {
     		c: function create() {
-    			create_component(adminpage.$$.fragment);
+    			create_component(mainpage.$$.fragment);
     		},
     		m: function mount(target, anchor) {
-    			mount_component(adminpage, target, anchor);
+    			mount_component(mainpage, target, anchor);
     			current = true;
     		},
     		i: function intro(local) {
     			if (current) return;
-    			transition_in(adminpage.$$.fragment, local);
+    			transition_in(mainpage.$$.fragment, local);
     			current = true;
     		},
     		o: function outro(local) {
-    			transition_out(adminpage.$$.fragment, local);
+    			transition_out(mainpage.$$.fragment, local);
     			current = false;
     		},
     		d: function destroy(detaching) {
-    			destroy_component(adminpage, detaching);
+    			destroy_component(mainpage, detaching);
     		}
     	};
 
