@@ -15,7 +15,7 @@
 <Route path="iniciative" component="{IniciativePage}"/>
 <Route path="admin" component="{AdminPage}"/>
 <Route path="recycler" component="{DisponserPage}"/>
-    <Route path="/"><MainPage /></Route>
+    <Route path="/"><AdminPage /></Route>
 </Router>
 
 
