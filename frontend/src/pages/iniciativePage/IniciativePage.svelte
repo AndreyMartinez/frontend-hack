@@ -1,5 +1,6 @@
 <script>
-	import Header from '../../component/Header.svelte'
+  import Header from '../../component/Header.svelte'
+   import { NotificationDisplay, notifier } from '@beyonk/svelte-notifications'
   import { onMount } from 'svelte';
 
   /** 
@@ -9,7 +10,7 @@
 onMount(async () => {
 		map = new google.maps.Map(container, {
             zoom,
-			center,// optional
+		     	center
         });
           
      map.addListener('click', function(mapsMouseEvent) {
@@ -25,7 +26,25 @@ onMount(async () => {
     });
   
       
-
+const sendInfoUser = async() => {
+  let date = new Date().toString()
+  let Response = {
+	"user_id":'',
+	"latitud":center.split(',')[0].replace('(','').replace(' ',''),
+	"longitud":center.split(',')[1].replace('(','').replace(' ',''),
+  "fecha":date
+  }
+     await fetch('http://192.168.1.3:8080/api/recycle',{
+    method: "POST",
+    body:  JSON.stringify(Response)
+   }).then(response => { notifier.success('Pronto, nos podremos en contacto')
+setTimeout(()=> {
+     navigate("/",{replace:true})
+},3000)
+      }).catch(err => {
+         
+      })
+}
         
 
 let cajas = 'assets/img/caja-01.png'
@@ -38,13 +57,16 @@ let  marker;
 let map;
 	let zoom = 12;
     let center = {lat: 4.638305561012602, lng: -74.08649498920173};
-    
-  
+let textArea  
+   let themes = { 
+  success: '#28a74559',
+}
     
 	
 </script>
 
 <main>  
+<NotificationDisplay {themes}/>
 <img src={mainImg} class="contentImg" alt="img"/>
 <Header typeHeader={'general'}/>
 <div class="content">
@@ -82,7 +104,7 @@ let map;
 <h1>Paso 3  Por último envía el formulario.Fácil, simple y sencillo</h1>
 </div>
 <div class="content-img">
-<button type="" class="btn btn-outline-light btn-item button-minimal" on:click={routerMain}>Enviar respuesta</button>
+<button type="" class="btn btn-outline-light btn-item button-minimal" on:click={sendInfoUser}>Enviar respuesta</button>
 </div>
 </div>
 </main>

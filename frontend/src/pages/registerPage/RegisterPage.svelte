@@ -23,7 +23,8 @@
     body:  JSON.stringify({
         'email':email,
         'telefono':number,
-        'clave':password
+        'clave':password,
+        'rol':'disponedor'
     })
    }).then(response => {
 notifier.success('Usuario registrado correctamente')
@@ -31,7 +32,7 @@ setTimeout(()=> {
      navigate("/",{replace:true})
 },3000)
       }).catch(err => {
-         
+         console.log(err)
       })
    }
 
