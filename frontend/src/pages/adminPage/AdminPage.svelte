@@ -1,16 +1,9 @@
 <script>
 	import Header from '../../component/Header.svelte'
     import { navigate} from "svelte-routing";
-<<<<<<< HEAD
-      import { onMount } from 'svelte';
-
-let recyclerImg = 'assets/img/init.jpg'
-=======
    import { NotificationDisplay, notifier } from '@beyonk/svelte-notifications'
   import { onMount } from 'svelte';
   import Chart from 'svelte-frappe-charts';
->>>>>>> Raphael Martinez:  feat prototype
-
  
   /** 
    * @author Raphael Martinez 
@@ -22,12 +15,7 @@ onMount(async () => {
 		     	center
         });
           
-<<<<<<< HEAD
-     map.addListener('click', function(mapsMouseEvent) {
-          marker = new google.maps.Marker({
-             position: mapsMouseEvent.latLng,
-=======
-          await fetch('http://192.168.1.3:8080/api/recycling').then(response => {
+                    await fetch('http://192.168.1.3:8080/api/recycling').then(response => {
             return response.json()
           }).then(contentResponse => {
             contentResponse.responseContent.forEach(element => {
@@ -47,15 +35,13 @@ onMount(async () => {
             }
                 marker = new google.maps.Marker({
              position: {lat: parseFloat(element.latitud), lng: parseFloat(element.longitud)},
->>>>>>> Raphael Martinez:  feat prototype
-            animation: google.maps.Animation.DROP,
-            icon: 'http://maps.google.com/mapfiles/ms/micons/green-dot.png',
-          });
-          marker.setMap(map);
-         
-         center = mapsMouseEvent.latLng.toString()
-        });
-    });
+             animation: google.maps.Animation.DROP,
+             icon: icon,
+                })
+            })
+          })
+})
+
   let container;
 let  marker;
 let map;   
@@ -71,19 +57,12 @@ let map;
   };
 	let zoom = 12;
     let center = {lat: 4.638305561012602, lng: -74.08649498920173};
-
+    let recyclerImg = 'assets/img/init.jpg'
 </script>
-
 <main>  
 <img src={recyclerImg} class="contentImg" alt="img"/>
-
 <Header typeHeader={'general'}/>
 <div class="content">
-<<<<<<< HEAD
-<div class="full-screen" bind:this={container}></div>
- </div>
-</main>
-=======
 <div class="content">
 <div class="second-color">
 <div class="box-content box-content-one"></div> <p>Cartón</p>
@@ -98,13 +77,8 @@ let map;
  </div>
  </div>
  </main>
->>>>>>> Raphael Martinez:  feat prototype
  
-
-
 <style>
-<<<<<<< HEAD
-=======
 .full-screen {
   border-radius: 2%;
     width: 70%;
@@ -112,7 +86,6 @@ let map;
     margin: auto;
         margin-top: 0
 }
->>>>>>> Raphael Martinez:  feat prototype
 main {
 		height: 100%;
 		text-align: center;
@@ -130,6 +103,7 @@ main {
     visibility: visible;
   }
   .content{ 
+    flex-direction: column;
 display: flex;
     width: 100%;
     height: 100%;
@@ -142,24 +116,6 @@ display: flex;
 		font-size: 3.2em;
 		font-weight: 100;
 	}
-  .content-img{
-    display: flex;
-    flex-grow: 1;
-    
-  }
-  .img-content{
-    margin:auto;
-   width: 30%;
-  }
-  .element-content{
-    margin: auto;
-  }
-<<<<<<< HEAD
-  .btn-disponser{
-    margin-top: 9%;
-    width: 70%;
-    }
-=======
   	h1 {
          width: 88%;
             margin: 2% auto;
@@ -168,5 +124,4 @@ display: flex;
 		font-size: 2.2em;
 		font-weight: 100;
 	}
->>>>>>> Raphael Martinez:  feat prototype
 </style>
