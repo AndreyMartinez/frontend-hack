@@ -1,16 +1,6 @@
 <script>
 	import Header from '../../component/Header.svelte'
 	
-
-  /**
-   * @author Raphael Martinez
-   * @description handler de navegación para registro del usuario
-  **/
-  const routerRegister = (type) => {
-   if(type === 'register')navigate("/register",{replace:true})
-   else if (type === 'login') navigate("/login",{replace:true})
-  }
-  
 let cajas = 'assets/img/caja-01.png'
 let latas = 'assets/img/cel-01.png'
 let celulares = 'assets/img/latas-01.png'

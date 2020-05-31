@@ -34,8 +34,8 @@
    {/if}
 {#if typeHeader == "general"}
 <div class="item info-user">
-<div class="flex">
-   <img class="img-circle"  src={img} alt="user"/>
+<div class="flex secondary">
+<button type="" class="btn btn-outline-light btn-item button-minimal">Cerrar sesión</button>
 </div>
 </div>
 {/if}
@@ -69,14 +69,13 @@
    .principal-item{
     flex-grow: 4;
    }
-   .button{
-      margin:1%
+   .button-minimal{
+    margin: auto 4%;
+    width: 50%;
    }
-   .img-circle{
-      border-radius: 53%;
-    width: 83%;
-    height: 92%;
-    margin: 5% 0;
+   .secondary{
+      width: 100%;
+    flex-direction: inherit;
    }
    .flex{
       display: flex;

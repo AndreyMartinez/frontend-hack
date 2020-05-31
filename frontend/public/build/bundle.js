@@ -1000,7 +1000,7 @@ var app = (function () {
         window.document.createElement
     );
     const globalHistory = createHistory(canUseDOM ? window : createMemorySource());
-    const { navigate: navigate$1 } = globalHistory;
+    const { navigate } = globalHistory;
 
     /**
      * Adapted from https://github.com/reach/router/blob/b60e6dd781d5d3a4bdaaf4de665649c0f6a7e78d/src/lib/utils.js
@@ -2911,7 +2911,7 @@ var app = (function () {
     			t = space();
     			create_component(button1.$$.fragment);
     			add_location(div0, file$1, 24, 1, 618);
-    			attr_dev(div1, "class", "item buttom-content svelte-1bbjfpq");
+    			attr_dev(div1, "class", "item buttom-content svelte-1smuzz5");
     			add_location(div1, file$1, 23, 1, 583);
     		},
     		m: function mount(target, anchor) {
@@ -3025,29 +3025,27 @@ var app = (function () {
     function create_if_block$2(ctx) {
     	let div1;
     	let div0;
-    	let img_1;
-    	let img_1_src_value;
+    	let button;
 
     	const block = {
     		c: function create() {
     			div1 = element("div");
     			div0 = element("div");
-    			img_1 = element("img");
-    			attr_dev(img_1, "class", "img-circle svelte-1bbjfpq");
-    			if (img_1.src !== (img_1_src_value = /*img*/ ctx[2])) attr_dev(img_1, "src", img_1_src_value);
-    			attr_dev(img_1, "alt", "user");
-    			add_location(img_1, file$1, 37, 3, 962);
-    			attr_dev(div0, "class", "flex svelte-1bbjfpq");
+    			button = element("button");
+    			button.textContent = "Cerrar sesión";
+    			attr_dev(button, "type", "");
+    			attr_dev(button, "class", "btn btn-outline-light btn-item button-minimal svelte-1smuzz5");
+    			add_location(button, file$1, 37, 0, 969);
+    			attr_dev(div0, "class", "flex secondary svelte-1smuzz5");
     			add_location(div0, file$1, 36, 0, 940);
-    			attr_dev(div1, "class", "item info-user svelte-1bbjfpq");
+    			attr_dev(div1, "class", "item info-user svelte-1smuzz5");
     			add_location(div1, file$1, 35, 0, 911);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div1, anchor);
     			append_dev(div1, div0);
-    			append_dev(div0, img_1);
+    			append_dev(div0, button);
     		},
-    		p: noop,
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(div1);
     		}
@@ -3085,11 +3083,11 @@ var app = (function () {
     			if (if_block0) if_block0.c();
     			t2 = space();
     			if (if_block1) if_block1.c();
-    			attr_dev(div0, "class", "item svelte-1bbjfpq");
+    			attr_dev(div0, "class", "item svelte-1smuzz5");
     			add_location(div0, file$1, 20, 1, 493);
-    			attr_dev(div1, "class", "principal-item svelte-1bbjfpq");
+    			attr_dev(div1, "class", "principal-item svelte-1smuzz5");
     			add_location(div1, file$1, 21, 1, 519);
-    			attr_dev(header, "class", "header svelte-1bbjfpq");
+    			attr_dev(header, "class", "header svelte-1smuzz5");
     			add_location(header, file$1, 19, 0, 468);
     		},
     		l: function claim(nodes) {
@@ -3131,9 +3129,7 @@ var app = (function () {
     			}
 
     			if (/*typeHeader*/ ctx[0] == "general") {
-    				if (if_block1) {
-    					if_block1.p(ctx, dirty);
-    				} else {
+    				if (if_block1) ; else {
     					if_block1 = create_if_block$2(ctx);
     					if_block1.c();
     					if_block1.m(header, null);
@@ -3172,7 +3168,7 @@ var app = (function () {
 
     function instance$3($$self, $$props, $$invalidate) {
     	const routerRegister = type => {
-    		if (type === "register") navigate$1("/register", { replace: true }); else if (type === "login") navigate$1("/login", { replace: true });
+    		if (type === "register") navigate("/register", { replace: true }); else if (type === "login") navigate("/login", { replace: true });
     	};
 
     	let { typeHeader } = $$props;
@@ -3194,7 +3190,7 @@ var app = (function () {
     	};
 
     	$$self.$capture_state = () => ({
-    		navigate: navigate$1,
+    		navigate,
     		Button,
     		routerRegister,
     		typeHeader,
@@ -3203,7 +3199,7 @@ var app = (function () {
 
     	$$self.$inject_state = $$props => {
     		if ("typeHeader" in $$props) $$invalidate(0, typeHeader = $$props.typeHeader);
-    		if ("img" in $$props) $$invalidate(2, img = $$props.img);
+    		if ("img" in $$props) img = $$props.img;
     	};
 
     	if ($$props && "$$inject" in $$props) {
@@ -3964,7 +3960,7 @@ var app = (function () {
        * @description handler de navegación para registro del usuario
       **/
     	const routerMain = () => {
-    		navigate$1("/", { replace: true });
+    		navigate("/", { replace: true });
     	};
 
     	/**
@@ -3984,7 +3980,7 @@ var app = (function () {
 
     			setTimeout(
     				() => {
-    					navigate$1("/", { replace: true });
+    					navigate("/", { replace: true });
     				},
     				3000
     			);
@@ -4026,7 +4022,7 @@ var app = (function () {
     	};
 
     	$$self.$capture_state = () => ({
-    		navigate: navigate$1,
+    		navigate,
     		NotificationDisplay: Notifications,
     		notifier,
     		src,
@@ -4087,8 +4083,6 @@ var app = (function () {
     }
 
     /* src/pages/loginPage/LoginPage.svelte generated by Svelte v3.23.0 */
-
-    const { console: console_1$1 } = globals;
     const file$5 = "src/pages/loginPage/LoginPage.svelte";
 
     function create_fragment$7(ctx) {
@@ -4142,37 +4136,37 @@ var app = (function () {
     			attr_dev(video, "reload", "");
     			if (video.src !== (video_src_value = /*src*/ ctx[0])) attr_dev(video, "src", video_src_value);
     			attr_dev(video, "class", "svelte-ccrr3z");
-    			add_location(video, file$5, 32, 0, 681);
+    			add_location(video, file$5, 31, 0, 650);
     			attr_dev(h1, "class", "svelte-ccrr3z");
-    			add_location(h1, file$5, 36, 1, 770);
+    			add_location(h1, file$5, 35, 1, 739);
     			attr_dev(input0, "type", "email");
     			attr_dev(input0, "class", "form-control input svelte-ccrr3z");
     			attr_dev(input0, "placeholder", "correo");
     			attr_dev(input0, "aria-label", "email");
     			attr_dev(input0, "aria-describedby", "basic-addon1");
-    			add_location(input0, file$5, 38, 4, 885);
+    			add_location(input0, file$5, 37, 4, 854);
     			attr_dev(input1, "type", "password");
     			attr_dev(input1, "class", "form-control input svelte-ccrr3z");
     			attr_dev(input1, "placeholder", "Contraseña");
     			attr_dev(input1, "aria-label", "password");
     			attr_dev(input1, "aria-describedby", "basic-addon1");
-    			add_location(input1, file$5, 39, 1, 1025);
+    			add_location(input1, file$5, 38, 1, 994);
     			attr_dev(button0, "type", "button");
     			attr_dev(button0, "class", "btn btn-outline-light btn-item svelte-ccrr3z");
-    			add_location(button0, file$5, 42, 3, 1215);
+    			add_location(button0, file$5, 41, 3, 1184);
     			attr_dev(button1, "type", "submit");
     			attr_dev(button1, "class", "btn btn-outline-light btn-item svelte-ccrr3z");
-    			add_location(button1, file$5, 43, 3, 1319);
+    			add_location(button1, file$5, 42, 3, 1288);
     			attr_dev(div0, "class", "content-button svelte-ccrr3z");
-    			add_location(div0, file$5, 41, 3, 1183);
+    			add_location(div0, file$5, 40, 3, 1152);
     			attr_dev(form, "class", "content-input svelte-ccrr3z");
-    			add_location(form, file$5, 37, 4, 814);
+    			add_location(form, file$5, 36, 4, 783);
     			attr_dev(div1, "class", "content-item svelte-ccrr3z");
-    			add_location(div1, file$5, 35, 0, 742);
+    			add_location(div1, file$5, 34, 0, 711);
     			attr_dev(div2, "class", "flex svelte-ccrr3z");
-    			add_location(div2, file$5, 34, 0, 723);
+    			add_location(div2, file$5, 33, 0, 692);
     			attr_dev(main, "class", "svelte-ccrr3z");
-    			add_location(main, file$5, 30, 0, 649);
+    			add_location(main, file$5, 29, 0, 618);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -4260,7 +4254,7 @@ var app = (function () {
        * @description handler de navegación para registro del usuario
       **/
     	const routerMain = () => {
-    		navigate$1("/", { replace: true });
+    		navigate("/", { replace: true });
     	};
 
     	/**
@@ -4269,8 +4263,7 @@ var app = (function () {
      **/
     	const sendLogin = () => {
     		success("Iniciando sesión");
-    		navigate$1("/recycler", { replace: true });
-    		console.log(email, password);
+    		navigate("/recycler", { replace: true });
     	};
 
     	let email = null;
@@ -4278,7 +4271,7 @@ var app = (function () {
     	const writable_props = ["src"];
 
     	Object.keys($$props).forEach(key => {
-    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$1.warn(`<LoginPage> was created with unknown prop '${key}'`);
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<LoginPage> was created with unknown prop '${key}'`);
     	});
 
     	let { $$slots = {}, $$scope } = $$props;
@@ -4299,7 +4292,7 @@ var app = (function () {
     	};
 
     	$$self.$capture_state = () => ({
-    		navigate: navigate$1,
+    		navigate,
     		NotificationDisplay: Notifications,
     		notifier,
     		src,
@@ -4404,31 +4397,31 @@ var app = (function () {
     			if (img0.src !== (img0_src_value = /*mainImg*/ ctx[3])) attr_dev(img0, "src", img0_src_value);
     			attr_dev(img0, "class", "contentImg svelte-1mr8hg3");
     			attr_dev(img0, "alt", "img");
-    			add_location(img0, file$6, 20, 0, 516);
+    			add_location(img0, file$6, 10, 0, 236);
     			if (img1.src !== (img1_src_value = /*cajas*/ ctx[0])) attr_dev(img1, "src", img1_src_value);
     			attr_dev(img1, "class", "img-content svelte-1mr8hg3");
     			attr_dev(img1, "alt", "cajas");
-    			add_location(img1, file$6, 24, 1, 649);
+    			add_location(img1, file$6, 14, 1, 369);
     			attr_dev(h1, "class", "svelte-1mr8hg3");
-    			add_location(h1, file$6, 25, 1, 700);
+    			add_location(h1, file$6, 15, 1, 420);
     			attr_dev(div0, "class", "content-img svelte-1mr8hg3");
-    			add_location(div0, file$6, 23, 1, 622);
+    			add_location(div0, file$6, 13, 1, 342);
     			if (img2.src !== (img2_src_value = /*latas*/ ctx[1])) attr_dev(img2, "src", img2_src_value);
     			attr_dev(img2, "class", "img-content svelte-1mr8hg3");
     			attr_dev(img2, "alt", "latas");
-    			add_location(img2, file$6, 28, 1, 777);
+    			add_location(img2, file$6, 18, 1, 497);
     			attr_dev(div1, "class", "content-img svelte-1mr8hg3");
-    			add_location(div1, file$6, 27, 1, 750);
+    			add_location(div1, file$6, 17, 1, 470);
     			if (img3.src !== (img3_src_value = /*celulares*/ ctx[2])) attr_dev(img3, "src", img3_src_value);
     			attr_dev(img3, "class", "img-content svelte-1mr8hg3");
     			attr_dev(img3, "alt", "latas");
-    			add_location(img3, file$6, 31, 1, 864);
+    			add_location(img3, file$6, 21, 1, 584);
     			attr_dev(div2, "class", "content-img svelte-1mr8hg3");
-    			add_location(div2, file$6, 30, 2, 837);
+    			add_location(div2, file$6, 20, 2, 557);
     			attr_dev(div3, "class", "content svelte-1mr8hg3");
-    			add_location(div3, file$6, 22, 0, 599);
+    			add_location(div3, file$6, 12, 0, 319);
     			attr_dev(main, "class", "svelte-1mr8hg3");
-    			add_location(main, file$6, 19, 0, 507);
+    			add_location(main, file$6, 9, 0, 227);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -4480,10 +4473,6 @@ var app = (function () {
     }
 
     function instance$8($$self, $$props, $$invalidate) {
-    	const routerRegister = type => {
-    		if (type === "register") navigate("/register", { replace: true }); else if (type === "login") navigate("/login", { replace: true });
-    	};
-
     	let cajas = "assets/img/caja-01.png";
     	let latas = "assets/img/cel-01.png";
     	let celulares = "assets/img/latas-01.png";
@@ -4496,15 +4485,7 @@ var app = (function () {
 
     	let { $$slots = {}, $$scope } = $$props;
     	validate_slots("DisponserPage", $$slots, []);
-
-    	$$self.$capture_state = () => ({
-    		Header,
-    		routerRegister,
-    		cajas,
-    		latas,
-    		celulares,
-    		mainImg
-    	});
+    	$$self.$capture_state = () => ({ Header, cajas, latas, celulares, mainImg });
 
     	$$self.$inject_state = $$props => {
     		if ("cajas" in $$props) $$invalidate(0, cajas = $$props.cajas);
