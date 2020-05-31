@@ -19,7 +19,9 @@
     "svelte-material-ui": "^1.0.0-beta.21"
   },
   "dependencies": {
+    "@babel/core": "^7.10.2",
     "figma-plugin-ds-svelte": "^1.0.4",
+    "react": "^16.13.1",
     "sirv-cli": "^0.4.4",
     "smelte": "^1.0.12",
     "svelte-routing": "^1.4.2",
