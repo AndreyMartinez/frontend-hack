@@ -9,19 +9,17 @@
   const routerRegister = (type) => {
    if(type === 'register')navigate("/register",{replace:true})
    else if (type === 'login') navigate("/login",{replace:true})
-   else navigate(`/recycler`,{replace:true})
+   else if (type === 'recycler') navigate("/",{replace:true})
   }
   
-
- /**
+   /**
    * @author Raphael Martinez
    * @description handler de navegación para regresar
   **/
-  const routerBack = (type) => {
+  const routerBack = () => {
      navigate(`/recycler`,{replace:true})
   }
         
-  
   export let typeHeader;
   export let returnPage;
   let img = 'assets/img/user.png'
@@ -47,9 +45,9 @@
 {#if typeHeader == "general"}
 <div class="item info-user">
 <div class="flex secondary">
-<button type="" class="btn btn-outline-light btn-item button-minimal">Cerrar sesión</button>
+<button type="" class="btn btn-outline-light btn-item button-minimal" on:click={() => routerRegister('recycler')}>Cerrar sesión</button>
 {#if returnPage}
-<button type="" class="btn btn-outline-light btn-item button-minimal"on:click={() => routerRegister('recycles')}>Regresar</button>
+<button type="" class="btn btn-outline-light btn-item button-minimal"on:click={routerBack}>Regresar</button>
 {/if}
 </div>
 </div>

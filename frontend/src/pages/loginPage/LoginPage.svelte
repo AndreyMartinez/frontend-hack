@@ -27,12 +27,17 @@ import { NotificationDisplay, notifier } from '@beyonk/svelte-notifications'
         await fetch('http://192.168.1.3:8080/api/login',{
     method: "POST",
     body:  JSON.stringify(response)
-   }).then(response => { 
-     localStorage.setItem("user",response.responseContent)
+   }).then(ifoUser => { 
+     return ifoUser.json()
+     }).then(content => {
+       console.log(content)
+     localStorage.setItem("user",content.responseContent)
      notifier.success('Bienvenido')
      setTimeout(()=> {
-     navigate("/recycler",{replace:true})
-     },4000)
+       console.log(content,content.responseContent)
+       if(content.responseContent.rol === "disponedor") navigate("/recycler",{replace:true})
+       else  navigate("/admin",{replace:true})
+     },3000)
      }).catch(err => {
        console.log(err)
        })

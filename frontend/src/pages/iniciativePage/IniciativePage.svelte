@@ -29,11 +29,14 @@ onMount(async () => {
       
 const sendInfoUser = async() => {
   let date = new Date().toString()
+  console.log(localStorage.getItem("user").email)
   let Response = {
+    "email":localStorage.getItem("user").email,
 	"user_id":'',
 	"latitud":center.split(',')[0].replace('(','').replace(' ',''),
 	"longitud":center.split(',')[1].replace('(','').replace(' ',''),
-  "fecha":date
+  "fecha":date,
+  "descripcion":textArea
   }
      await fetch('http://192.168.1.3:8080/api/recycle',{
     method: "POST",
@@ -51,8 +54,8 @@ navigate("/recycler",{replace:true})
 }
 
 let cajas = 'assets/img/caja-01.png'
-let latas = 'assets/img/cel-01.png'
-let celulares = 'assets/img/latas-01.png'
+let latas = 'assets/img/latas-01.png'
+let celulares = 'assets/img/cel-01.png'
 let mainImg = 'assets/img/person.jpg'
 let recyclerImg = 'assets/img/init.jpg'
 
