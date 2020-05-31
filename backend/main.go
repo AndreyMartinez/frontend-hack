@@ -1,7 +1,7 @@
 package main
 
 import (
-	"encoding/json"
+	//"encoding/json"
 	"net/http"
 	"fmt"
 	"github.com/candrea/backend/model"
@@ -38,9 +38,17 @@ func LoginUserController (c *gin.Context){
 	if err != nil {
 		c.Status(http.StatusBadRequest)
 	}
-	fmt.Println(usuario)
-	 usuario = connection.LoginUser(usuario);
-	c.JSON(http.StatusOK, gin.H{"responseContent": usuario})
+	
+	 user := connection.LoginUser(usuario);
+	 fmt.Println(user)
+
+	if user.Rol != "" {
+		c.JSON(http.StatusOK, gin.H{"responseContent": user})
+	}
+	c.Status(http.StatusBadRequest)
+	
+	
+	
 	
 }
 
@@ -53,6 +61,7 @@ func InsertRecycleController (c *gin.Context){
 	}
 	fmt.Println(reciclaje)
 	//usuario.ID = bson.NewObjectId() 
+	
 	if err := connection.InsertRecycle(reciclaje);
 	 err != nil {
 	
@@ -61,13 +70,12 @@ func InsertRecycleController (c *gin.Context){
 	
 }
 
-func RecycleController (c *gin.Context) {
-		
-	//usuario.ID = bson.NewObjectId() 
-	 
-	 
+func RecycleController (c *gin.Context) {		
 	
-	//usuario.ID = bson.NewObjectId() 
+	reciclaje := connection.Recycle();
+	if reciclaje != nil{
+		c.JSON(http.StatusOK, gin.H{"responseContent": reciclaje})
+	}
 	if err := connection.Recycle();
 	 err != nil {
 	
@@ -93,16 +101,6 @@ func main() {
 	
 }
 
-func respondWithError(w http.ResponseWriter, code int, message string) {
-	respondWithJSON(w, code, map[string]string{"error": message})
-}
 
-func respondWithJSON(w http.ResponseWriter, code int, payload interface{}) {
-	response, _ := json.Marshal(payload)
-
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(code)
-	w.Write(response)
-}
 
 
