@@ -23,7 +23,7 @@
     "figma-plugin-ds-svelte": "^1.0.4",
     "react": "^16.13.1",
     "sirv-cli": "^0.4.4",
-    "smelte": "^1.0.12",
+    "smelte": "^1.1.8",
     "svelte-routing": "^1.4.2",
     "svelte-ui-button": "0.0.10",
     "sveltestrap": "^3.3.3"
